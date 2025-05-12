@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>飲食習慣與食道癌風險預測</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>飲食習慣與食道癌風險預測</h1>
+        <nav>
+            <ul>
+                <li><a href="#" data-section="intro">專案簡介</a></li>
+                <li><a href="#" data-section="details">專案介紹</a></li>
+                <li><a href="#" data-section="data">數據描述</a></li>
+                <li><a href="#" data-section="model">模型選擇與描述</a></li>
+                <li><a href="#" data-section="results">預測結果</a></li>
+                <li><a href="#" data-section="references">參考資料與附錄</a></li>
+                <li><a href="#" data-section="team">製作團隊</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="intro" class="content active">
+            <h2>專案簡介</h2>
+            <p>這是一個關於飲食習慣與食道癌風險預測的專案，旨在研究飲食習慣對食道癌風險的影響。</p>
+        </section>
+        <section id="details" class="content hidden">
+            <h2>專案介紹</h2>
+            <article>
+                <h3>研究背景</h3>
+                <p>
+                    食道癌（Esophageal Cancer, ESCA）是一種常見的消化道惡性腫瘤，全球每年新增病例超過60萬例，死亡率位居癌症相關死因前列。
+                    由於早期症狀不明顯，患者確診時多已進展至晚期，使得整體預後不佳，五年存活率普遍低於20%。目前臨床診斷仰賴內視鏡與組織病理學檢查，
+                    但這些方法具侵入性，且難以大規模篩檢高風險族群。
+                </p>
+                <p>
+                    研究顯示，食道癌的發生與多種因素密切相關，包括性別、年齡、吸菸、飲酒、熱飲、胃食道逆流、幽門桿菌感染、飲食習慣（如高鹽、高油、缺乏蔬果攝取）等。
+                    此外，近年隨著蛋白質體學（proteomics）與人工智慧技術的發展，越來越多學者嘗試透過臨床資訊與蛋白質表現量資料，建立機器學習模型，
+                    以提早辨識高風險個體或預測疾病分期、治療反應與預後狀態。
+                </p>
+                <p>
+                    如何整合臨床與分子層級資料，發展準確且實用的食道癌預測模型，是目前癌症研究與公共健康領域的重要方向。
+                    本研究旨在透過公開資料集，探討影響食道癌發生與發展的關鍵因子，並建立預測模型，期望為早期偵測與精準治療提供科學依據。
+                </p>
+            </article>
+        </section>
+        <section id="data" class="content hidden">
+            <h2>數據描述</h2>
+            <p>這裡是數據描述的內容。</p>
+        </section>
+        <section id="model" class="content hidden">
+            <h2>模型選擇與描述</h2>
+            <article>
+                <h3>採用之模型</h3>
+                <p>
+                    本研究使用多種模型進行預測，包括決策樹（Decision Tree）、KNN 和隨機森林（Random Forest）。
+                    每種模型均具有其運作原理與優缺點，詳細說明請參考以下內容：
+                </p>
+                <p>
+                    <strong>決策樹：</strong>易於理解和解釋，能處理數值和類別特徵，對於缺失值和異常值具有一定的容忍度。
+                </p>
+                <p>
+                    <strong>KNN：</strong>基於鄰近樣本進行預測，無需訓練過程，但對於特徵的尺度較為敏感。
+                </p>
+                <p>
+                    <strong>隨機森林：</strong>集成多棵決策樹，具有高準確性，能提供特徵重要性評估。
+                </p>
+            </article>
+        </section>
+        <section id="results" class="content hidden">
+            <h2>預測結果</h2>
+            <article>
+                <h3>重要變數分析</h3>
+                <ul>
+                    <li>吸菸年數（number_pack_years_smoked）—佔比 31.7%</li>
+                    <li>檢查過的淋巴結數（primary_pathology_lymph_node_examined_count）—佔比 22.4%</li>
+                    <li>陽性淋巴結數（primary_pathology_number_of_lymphnodes_positive_by_he）—佔比 16.6%</li>
+                    <li>吸菸紀錄（tobacco_smoking_history）—佔比 9.8%</li>
+                    <li>腫瘤分級 GX（primary_pathology_neoplasm_histologic_grade_GX）—佔比 4.8%</li>
+                </ul>
+                <h3>模型效能比較</h3>
+                <ul>
+                    <li>隨機森林模型準確率最高（94%）。</li>
+                    <li>決策樹模型準確率達 91%。</li>
+                    <li>KNN 模型準確率約為 84%，但在測試資料過多時有所下降。</li>
+                </ul>
+                <h3>模型穩定性分析</h3>
+                <p>
+                    在不同訓練／測試比例下，隨機森林與決策樹模型準確率穩定，約 88% 至 96%。
+                    KNN 模型則較為敏感，準確率隨測試資料增加而下降。
+                </p>
+                <h3>決策樹模型解釋性</h3>
+                <p>
+                    決策樹模型提供清楚的預測邏輯，例如：
+                    若吸菸年數低於 37.75 年，且陽性淋巴結數為 0，則預測無殘留腫瘤。
+                </p>
+            </article>
+        </section>
+        <section id="references" class="content hidden">
+            <h2>參考資料與附錄</h2>
+            <article>
+                <h3>附錄一：本報告之原始程式碼 (Python)</h3>
+                <pre>
+pd = pd.read_csv('Esophageal Cancer Clinical Data.csv')
+pd.head()
+#（此處省略中間部分程式碼，請參考完整內容）
+plt.show()
+                </pre>
+                <p>完整程式碼請參閱報告附件。</p>
+            </article>
+        </section>
+        <section id="team" class="content hidden">
+            <h2>製作團隊</h2>
+            <p>這裡是製作團隊的內容。</p>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
